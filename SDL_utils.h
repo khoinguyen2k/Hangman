@@ -8,6 +8,7 @@ const int SCREEN_WIDTH =320;
 const int SCREEN_HEIGHT =480;
 const string WINDOW_TITLE ="The Brick Game.";
 const SDL_Color DEFAULT_COLOR ={255, 255, 255};
+
 void initSDL(SDL_Window* &window, SDL_Renderer* &renderer,
    const int &SCREEN_WIDTH, const int &SCREEN_HEIGHT, const string &WINDOW_TITLE);
 void logSDLError(ostream& os, const string &msg, bool fatal =false);

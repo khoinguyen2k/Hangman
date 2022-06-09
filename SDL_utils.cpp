@@ -14,24 +14,32 @@ void logSDLError(ostream& os, const string &msg, bool fatal)
       exit(1);
    }
 }
+
 void initSDL(SDL_Window* &window, SDL_Renderer* &renderer,
    const int &SCREEN_WIDTH, const int &SCREEN_HEIGHT, const string &WINDOW_TITLE)
 {
-   if (SDL_Init(SDL_INIT_EVERYTHING !=0))
+   if (SDL_Init(SDL_INIT_EVERYTHING) !=0)
       logSDLError(std::cout, "SDL_Init", true);
    window =SDL_CreateWindow(WINDOW_TITLE.c_str(), SDL_WINDOWPOS_CENTERED,
-      SDL_WINDOWPOS_CENTERED,SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+      SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
    //test at home
    if (window ==nullptr) logSDLError(std::cout, "CreateWindow", true);
    renderer =SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
                                           SDL_RENDERER_PRESENTVSYNC);
+
+   if (renderer == nullptr) logSDLError(std::cout, "CreateRenderer", true);
+
+   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+   SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
+
 void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
 {
    SDL_DestroyRenderer(renderer);
    SDL_DestroyWindow(window);
    SDL_Quit();
 }
+
 void waitUntilKeyPressed()
 {
    SDL_Event e;
@@ -72,6 +80,7 @@ void initSDL_ttf()
       exit(1);
    }
 }
+
 SDL_Texture* loadFont(const char* path, const char* text, int fsize, SDL_Renderer* renderer)
 {
    TTF_Font* font =TTF_OpenFont(path, fsize);
