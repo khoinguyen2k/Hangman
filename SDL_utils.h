@@ -2,6 +2,7 @@
 #define SDL_UTILS_H
 
 #include <string>
+#include <SDL.h>
 using namespace std;
 
 const int SCREEN_WIDTH =320;

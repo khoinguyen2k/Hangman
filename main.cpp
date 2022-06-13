@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include <SDL.h>
-#include <SDL_image.h>
 #include "SDL_utils.h"
 #include "Game.h"
 #include "Menu.h"
@@ -34,7 +33,7 @@ int main(int argc, char* agrv[])
    {
       while (SDL_PollEvent(&menuEvent))
       {
-         if (menuEvent.type ==SDL_QUIT) {menuIsRunning =false; break;}
+         if (menuEvent.type ==SDL_QUIT) {game.stop(); break;}
          if (menuEvent.type ==SDL_MOUSEBUTTONDOWN)
          {
             menu.handleMouseEvent(menuEvent);

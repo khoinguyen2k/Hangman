@@ -8,7 +8,7 @@ Pixel::Pixel(Game* _game, int _row, int _col):
    game(_game),
    row(_row),
    col(_col),
-   color(rand() %8)
+   color(0)
 {}
 bool Pixel::isInsideBoard()
 {

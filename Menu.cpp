@@ -1,6 +1,4 @@
 #include "Menu.h"
-#include <vector>
-#include "SDL_utils.h"
 using namespace std;
 
 Menu::Menu(vector<Button> _buttons):

@@ -1,6 +1,7 @@
 #include "Brick.h"
 #include "Game.h"
 #include <cmath>
+using namespace std;
 
 vector<Pixel> Brick::createPixels(vector<string> data)
 {
@@ -14,7 +15,8 @@ vector<Pixel> Brick::createPixels(vector<string> data)
       {
          Pixel newPixel(game, row +r, col +c);
          pixels[count] =newPixel;
-         pixels[count].setColor(color); count++;
+         pixels[count].setColor(color);
+         count++;
       }
    return pixels;
 }
@@ -27,8 +29,6 @@ Brick::Brick(Game* _game, int _row, int _col):
    data(pixelIdData[type])
 {
    pixels =createPixels(data);
-   for (int i =0; i <4; i++)
-      pixels[i].setColor(color);
 }
 
 bool Brick::canFall()

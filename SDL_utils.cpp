@@ -75,10 +75,7 @@ SDL_Texture* loadTexture(string path, SDL_Renderer* renderer)
 void initSDL_ttf()
 {
    if (TTF_Init() <0)
-   {
-      cout <<"TTF_Init Error: " <<TTF_GetError() <<endl;
-      exit(1);
-   }
+      logSDLError(std::cout, "TTF_Init", true);
 }
 
 SDL_Texture* loadFont(const char* path, const char* text, int fsize, SDL_Renderer* renderer)
@@ -93,8 +90,5 @@ SDL_Texture* loadFont(const char* path, const char* text, int fsize, SDL_Rendere
 void initSDL_mixer()
 {
    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) <0)
-   {
-      cout <<"Mixer_Init Error: " <<Mix_GetError() <<endl;
-      exit(1);
-   }
+      logSDLError(std::cout, "Mixer_Init", true);
 }

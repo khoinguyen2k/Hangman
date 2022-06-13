@@ -22,6 +22,7 @@ public:
    ~Game();
    void loadMedia();
    bool isRunning() {return running ==true;}
+   void stop() {running =false;}
    vector<vector<char>> getBoard() {return board;}
    void draw(SDL_Texture* tex, int x =0, int y =0);
    void drawPixel(int row, int col, int color);
